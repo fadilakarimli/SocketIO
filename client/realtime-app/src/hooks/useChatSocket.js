@@ -1,33 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { socket, SERVER_URL } from "../config/socket";
 
-const SESSION_KEY = "nexchat.session";
-
-function saveSession(session) {
-  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-}
-
-function loadSession() {
-  try {
-    const raw = localStorage.getItem(SESSION_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-
-    if (!parsed?.username || !parsed?.room) return null;
-
-    return {
-      username: String(parsed.username),
-      room: String(parsed.room),
-    };
-  } catch {
-    return null;
-  }
-}
-
-function clearSession() {
-  localStorage.removeItem(SESSION_KEY);
-}
-
 export function useChatSocket() {
   const [joined, setJoined] = useState(false);
   const [myName, setMyName] = useState("");
@@ -90,28 +63,16 @@ export function useChatSocket() {
       });
     });
 
-    const existingSession = loadSession();
-    if (existingSession) {
-      setMyName(existingSession.username);
-      socket.connect();
-      socket.emit("join_room", {
-        username: existingSession.username,
-        room: existingSession.room,
-      });
-    }
-
     return () => socket.removeAllListeners();
   }, []);
 
   const handleJoin = useCallback((username, rm) => {
-    saveSession({ username, room: rm });
     setMyName(username);
     socket.connect();
     socket.emit("join_room", { username, room: rm });
   }, []);
 
   const handleLeave = useCallback(() => {
-    clearSession();
     socket.disconnect();
     setJoined(false);
     setMessages([]);
