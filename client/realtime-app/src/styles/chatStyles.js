@@ -30,6 +30,13 @@ export const styles = {
     zIndex: 1,
     boxShadow: "0 24px 80px rgba(0,0,0,0.5)",
   },
+
+  // Mobile join card
+  mobileJoinCard: {
+    borderRadius: 16,
+    padding: "32px 24px",
+    margin: "0 16px",
+  },
   joinLogo: {
     display: "flex",
     alignItems: "center",
@@ -105,7 +112,50 @@ export const styles = {
     background: "#1e1e2e",
     border: "1px solid #2a2a3e",
     borderRadius: 8,
-    padding: "6px 8px",
+    padding: "8px 10px",
+    cursor: "pointer",
+    transition: "background 0.2s, border-color 0.2s",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+  },
+
+  // Mobile responsive overrides will be handled via CSS
+  mobileMenuBtn: {
+    display: "block",
+  },
+
+  mobileSidebar: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: "100vh",
+    width: "280px",
+    zIndex: 99,
+    transform: "translateX(-100%)",
+    background: "#10101a",
+    borderRight: "1px solid #1e1e2e",
+    boxShadow: "4px 0 20px rgba(0,0,0,0.3)",
+  },
+
+  mobileSidebarOpen: {
+    transform: "translateX(0)",
+  },
+
+  mobileOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    background: "rgba(0,0,0,0.5)",
+    zIndex: 98,
+    opacity: 0,
+    visibility: "hidden",
+    transition: "opacity 0.3s, visibility 0.3s",
+  },
+
+  mobileOverlayVisible: {
+    opacity: 1,
+    visibility: "visible",
   },
 
   sidebar: {

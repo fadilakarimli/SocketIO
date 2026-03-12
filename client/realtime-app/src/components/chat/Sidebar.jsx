@@ -6,6 +6,7 @@ export function Sidebar({ room, users, onLeave, sidebarOpen }) {
 
   return (
     <div
+      className={`chat-sidebar ${sidebarOpen ? 'chat-sidebar-open' : ''}`}
       style={{
         ...styles.sidebar,
         transform: sidebarOpen ? "translateX(0)" : "translateX(-100%)",

@@ -4,6 +4,7 @@ import { Sidebar } from "./Sidebar";
 import { SystemMsg } from "./SystemMsg";
 import { TypingBubble } from "./TypingBubble";
 import { styles } from "../../styles/chatStyles";
+import "../../styles/mobile.css";
 
 export function ChatRoom({
   room,
@@ -29,6 +30,12 @@ export function ChatRoom({
 
   return (
     <div style={styles.appWrap}>
+      {/* Mobile overlay */}
+      <div 
+        className={`mobile-overlay ${sidebarOpen ? 'mobile-overlay-visible' : ''}`}
+        onClick={onCloseSidebarMobile}
+      />
+      
       <button className="chat-menu-btn" style={styles.menuBtn} onClick={onToggleSidebar}>
         <svg width="20" height="20" viewBox="0 0 20 20" fill="#aaa">
           <rect y="3" width="20" height="2" rx="1" />
@@ -37,13 +44,18 @@ export function ChatRoom({
         </svg>
       </button>
 
-      <Sidebar room={room} users={users} onLeave={onLeave} sidebarOpen={sidebarOpen} />
+      <Sidebar 
+        room={room} 
+        users={users} 
+        onLeave={onLeave} 
+        sidebarOpen={sidebarOpen} 
+      />
 
-      <div style={styles.chatArea} onClick={onCloseSidebarMobile}>
-        <div style={styles.chatHeader}>
+      <div className="chat-area" style={styles.chatArea} onClick={onCloseSidebarMobile}>
+        <div className="chat-header" style={styles.chatHeader}>
           <div style={styles.headerLeft}>
             <span style={styles.headerHash}>#</span>
-            <span style={styles.headerRoom}>{room}</span>
+            <span className="header-room" style={styles.headerRoom}>{room}</span>
             <span
               style={{
                 ...styles.connDot,
@@ -57,7 +69,7 @@ export function ChatRoom({
 
         {connError && <div style={styles.connErrorBar}>{connError}</div>}
 
-        <div style={styles.msgList}>
+        <div className="msg-list" style={styles.msgList}>
           {messages.length === 0 && (
             <div style={styles.emptyState}>
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -80,8 +92,9 @@ export function ChatRoom({
           <div ref={bottomRef} />
         </div>
 
-        <form onSubmit={onSend} style={styles.inputBar}>
+        <form onSubmit={onSend} className="input-bar" style={styles.inputBar}>
           <input
+            className="chat-input"
             style={styles.chatInput}
             value={input}
             onChange={onInput}

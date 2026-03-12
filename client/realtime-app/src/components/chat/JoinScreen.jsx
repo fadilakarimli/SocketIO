@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { styles } from "../../styles/chatStyles";
+import "../../styles/mobile.css";
 
 export function JoinScreen({ onJoin }) {
   const [username, setUsername] = useState("");
@@ -21,6 +22,7 @@ export function JoinScreen({ onJoin }) {
     <div style={styles.joinWrap}>
       <div style={styles.joinGlow} />
       <div
+        className="join-card"
         style={{
           ...styles.joinCard,
           animation: shake ? "shake 0.4s ease" : "fadeUp 0.5s ease",
