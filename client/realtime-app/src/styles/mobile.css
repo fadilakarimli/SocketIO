@@ -1,6 +1,3 @@
-/* Mobile Responsive Styles for Chat Application */
-
-/* Mobile Menu Button - Show on mobile */
 @media (max-width: 768px) {
   .chat-menu-btn {
     display: block !important;
@@ -15,7 +12,6 @@
     transform: scale(0.95);
   }
   
-  /* Hide sidebar by default on mobile */
   .chat-sidebar {
     position: absolute !important;
     top: 0;
@@ -28,43 +24,36 @@
     box-shadow: 4px 0 20px rgba(0,0,0,0.3);
   }
   
-  /* Show sidebar when open */
   .chat-sidebar-open {
     transform: translateX(0) !important;
   }
   
-  /* Chat area adjustments on mobile */
   .chat-area {
     width: 100% !important;
     margin-top: 0 !important;
   }
   
-  /* Header padding adjustment - add top padding for menu button */
   .chat-header {
     padding: 14px 16px !important;
-    padding-top: 54px !important; /* Make room for hamburger menu */
+    padding-top: 54px !important; 
     position: relative;
     z-index: 10;
   }
   
-  /* Message list padding */
   .msg-list {
     padding: 16px 12px !important;
   }
   
-  /* Input bar padding */
   .input-bar {
     padding: 12px 12px !important;
   }
   
-  /* Join card mobile styling */
   .join-card {
     border-radius: 16px !important;
     padding: 32px 24px !important;
     margin: 0 16px;
   }
   
-  /* Mobile overlay for sidebar */
   .mobile-overlay {
     position: fixed;
     top: 0;
@@ -84,7 +73,6 @@
   }
 }
 
-/* Tablet adjustments */
 @media (max-width: 1024px) and (min-width: 769px) {
   .chat-menu-btn {
     display: block !important;
@@ -95,7 +83,6 @@
   }
 }
 
-/* Very small screens */
 @media (max-width: 480px) {
   .chat-sidebar {
     width: 100vw !important;
@@ -111,11 +98,10 @@
   }
   
   .chat-input {
-    font-size: 16px !important; /* Prevents zoom on iOS */
+    font-size: 16px !important;
   }
 }
 
-/* Landscape phone adjustments */
 @media (max-width: 768px) and (orientation: landscape) {
   .msg-list {
     padding: 8px 12px !important;
@@ -126,7 +112,6 @@
   }
 }
 
-/* Ensure full viewport height */
 html, body {
   height: 100vh;
   height: -webkit-fill-available;

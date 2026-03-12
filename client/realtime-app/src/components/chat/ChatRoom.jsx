@@ -30,7 +30,6 @@ export function ChatRoom({
 
   return (
     <div style={styles.appWrap}>
-      {/* Mobile overlay */}
       <div 
         className={`mobile-overlay ${sidebarOpen ? 'mobile-overlay-visible' : ''}`}
         onClick={onCloseSidebarMobile}

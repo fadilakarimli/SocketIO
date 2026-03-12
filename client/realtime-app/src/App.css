@@ -6,7 +6,6 @@
   text-align: center;
 }
 
-/* Mobile responsive styles */
 @media (max-width: 768px) {
   #root {
     padding: 0;
