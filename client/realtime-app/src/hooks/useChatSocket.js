@@ -68,8 +68,14 @@ export function useChatSocket() {
 
   const handleJoin = useCallback((username, rm) => {
     setMyName(username);
-    socket.connect();
-    socket.emit("join_room", { username, room: rm });
+    if (socket.connected) {
+      socket.emit("join_room", { username, room: rm });
+    } else {
+      socket.once("connect", () => {
+        socket.emit("join_room", { username, room: rm });
+      });
+      socket.connect();
+    }
   }, []);
 
   const handleLeave = useCallback(() => {
